@@ -1,0 +1,1 @@
+function k = ABEP_estimate(gamma_s, mu, sigma)

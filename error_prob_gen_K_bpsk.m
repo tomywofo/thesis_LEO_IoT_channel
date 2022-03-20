@@ -1,0 +1,13 @@
+function k = error_prob_gen_K_bpsk(EsNo, param_1)
+A = 1;
+B = 2;
+m = 1;
+k = param_1+1;
+gamma_val = k*EsNo;
+symb = (k*m)/gamma_val;
+% tx_power = 1;
+% alpha_other = sqrt(tx_power)/2;
+% symb = 1/(4*alpha_other^2*EsNo);
+alpha_val = k-m;
+beta_val = k+m-1;
+k = A*(symb/B)^((k+m)/2)/(sqrt(pi)*gamma(m)*gamma(k))*meijerG([(1-beta_val)/2, -beta_val/2],[],[alpha_val/2, -alpha_val/2],-(beta_val+1)/2, symb/B);

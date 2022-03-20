@@ -1,0 +1,13 @@
+function theta = elevation_angle(theta_max, height, inclination, time)
+c = 3e8;
+G = 6.67430e-11;
+M_e = 5.9722e24;
+R_e = 6371e3;
+r = height + R_e;
+omega_e = 2*pi/(24*3600);
+omega_s = sqrt(G*M_e/r^3);
+omega_f = omega_s-omega_e*cos(inclination*pi/180);
+gamma_0 = acos(R_e/r*cos(theta_max*pi/180))-theta_max*pi/180;
+cos_gamma = cos(omega_f*time)*cos(gamma_0);
+sin_gamma = sqrt(1-cos_gamma.^2);
+theta = acos(r*sin_gamma./sqrt(R_e^2+r^2-2*R_e*r*cos_gamma));

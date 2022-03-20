@@ -1,0 +1,1 @@
+function [Nnk, tnij]= crossing_rate_and_transition()
